@@ -23,7 +23,7 @@ This repository uses a unified `requirements.txt` and Git LFS to manage dependen
 
 ```bash
 # Install Git LFS if needed
-sudo apt install git-lfs              # or: brew install git-lfs
+sudo apt install git-lfs              # or: brew install git-LFS
 git lfs install
 
 # Clone the repo and pull large files
