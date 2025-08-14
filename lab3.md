@@ -1,6 +1,6 @@
 # Lab 3: **Running & Quantizing Llama Models on Android**
 
-This lab provides a hands-on walkthrough of how to run and optimize compact large language models (LLMs) directly on Android devices using the `llama.cpp` framework. You'll explore the full workflow, including downloading, converting, quantizing, deploying, and benchmarking LLaMA-style models. By the end, you'll have a working offline mobile LLM capable of running locally without server dependencies in an on-device android application.
+This lab provides a hands-on walkthrough of how to run and optimize compact large language models (LLMs) directly on Android devices using the `llama.cpp` framework. You'll explore the full workflow, including downloading, converting, quantizing, deploying, and benchmarking Llama-style models. By the end, you'll have a working offline mobile LLM capable of running locally without server dependencies in an on-device android application.
 
 ###  Learning Goals
 
@@ -50,7 +50,7 @@ adb version
 
 ## Step 2: Authenticate with Hugging Face
 
-We use Hugging Face to download a pretrained LLaMA-style model.
+We use Hugging Face to download a pretrained Llama-style model.
 
 **On your computer**, run:
 
@@ -213,7 +213,7 @@ fun Button(viewModel: MainViewModel, dm: DownloadManager, item: Downloadable) {
 }
 ```
 
-Press the Play button <img src="assets/lab3/play.png" alt="LLaMA Android App UI" width="30"/> in android studio to push the application to the device, and initialize the activation space. We haven't pushed the models yet so you won't be able to load them. We can fix that in the next step. 
+Press the Play button <img src="assets/lab3/play.png" alt="Llama Android App UI" width="30"/> in android studio to push the application to the device, and initialize the activation space. We haven't pushed the models yet so you won't be able to load them. We can fix that in the next step. 
 
 ---
 
@@ -245,7 +245,7 @@ Llama-3.2-3B-Instruct-gguf-TQ2_0
 
 ## Step 12: Build and Run the App
 
-**In Android Studio on your computer**, press the **Run** button <img src="assets/lab3/play.png" alt="LLaMA Android App UI" width="30"/>. The app will install on your device and open automatically.
+**In Android Studio on your computer**, press the **Run** button <img src="assets/lab3/play.png" alt="Llama Android App UI" width="30"/>. The app will install on your device and open automatically.
 
 ---
 
@@ -257,7 +257,7 @@ With the app installed and your models loaded onto the device, it's time to inte
 
 When the app opens **on your phone**, you'll see a simple interface with buttons to select your model, a text input field, and action buttons:
 
-<img src="assets/lab3/llamaapp_im1.jpeg" alt="LLaMA Android App UI" width="300"/>
+<img src="assets/lab3/llamaapp_im1.jpeg" alt="Llama Android App UI" width="300"/>
 
 - **Load**: Select one of the quantized models you pushed earlier.
 - **Text Field**: Type your prompt or question.
@@ -300,7 +300,7 @@ This step gives you both a subjective impression of quality and a quantitative m
 ##  Final Recap
 
 - Built and tested `llama.cpp` locally
-- Converted and quantized a LLaMA model to GGUF
+- Converted and quantized a Llama model to GGUF
 - Integrated quantized models into an Android app
 - Deployed and benchmarked on-device
 
