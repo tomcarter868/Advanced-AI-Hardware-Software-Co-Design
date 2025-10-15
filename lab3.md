@@ -28,24 +28,24 @@ This lab provides a hands-on walkthrough of how to run and optimize compact larg
 
 ---
 
-## Step 1: Install Android Studio & ADB
+## Step 1: Install Android Studio and Set Up the SDK
 
-Android Studio includes the tools needed to build and debug Android apps:
+Android Studio includes all the tools needed to build and debug Android apps, including **ADB** (installed automatically as part of the Platform-Tools).
 
-1. Download and install Android Studio **on your computer**.
-2. During setup, select components: **SDK**, **SDK Platform Tools**, and **NDK**.
-3. In settings, verify:
-   - SDK path: `~/Android/Sdk/`
-   - NDK ≥ version 25
-   - Platform-tools ≥ version 34
-4. Add `~/Android/Sdk/platform-tools` to your shell `PATH`.
-
-Check ADB installation **on your computer**:
-
-```bash
-adb version
-```
-
+1. Download and install **Android Studio** on your computer.  
+2. During setup, ensure the following components are selected:  
+   - **Android SDK**  
+   - **SDK Platform Tools** (includes ADB — no separate install required)  
+   - **NDK**  
+3. In **Settings → Appearance & Behavior → System Settings → Android SDK**, verify:  
+   - SDK path: `~/Android/Sdk/`  
+   - NDK version ≥ 25  
+   - Platform-Tools version ≥ 34  
+4. *(Optional)* Add the tools directory to your shell `PATH` so you can run ADB from any terminal:  
+   ```bash
+   export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+   ```
+   
 ---
 
 ## Step 2: Authenticate with Hugging Face
@@ -164,7 +164,7 @@ To Quantize, we can use the llama.cpp tools. **On your computer**, run:
 **In Android Studio on your computer**:
 
 - Open `llama.cpp/examples/llama.android`
-- Wait for Gradle sync
+- Wait for Gradle sync (this may take 10-15 minutes)
 - Switch to "Project" view for easier navigation. You can do this by selecting 'Android' in the top left of your screen, then selecting 'project' from the dropdown. 
 
 ---
@@ -181,7 +181,7 @@ First to enable debugging mode on your phone, do the following on your **mobile*
 
 **Then In Android Studio on your computer**, edit the following files:
 
-**Edit** `llama.androic/app/src/java/com.example.llama/MainActivity.kt`
+**Edit** `llama.android/app/src/java/com.example.llama/MainActivity.kt`
 Replace the `models = listOf(...)` section with:
 
 ```kotlin
@@ -269,20 +269,25 @@ This setup lets you evaluate both the usability and responsiveness of different 
 
 ---
 
-###  Benchmarking Model Performance
+### Benchmarking Model Performance
 
-To evaluate how each quantized model performs, tap the **Bench** button after loading a model. This will execute a benchmark routine that reports:
+To evaluate how each quantized model performs, tap the **Bench** button after loading a model.  
+This runs a **built-in benchmarking routine** that measures how efficiently the model processes and generates tokens on your device.  
+The benchmark reports two key metrics:
 
-- **Prompt processing speed (pp)** – tokens per second during initial input
-- **Token generation speed (tg)** – tokens per second during autoregressive generation
+- **Prompt processing speed (pp)** — measures how quickly the model encodes the input prompt **before generation begins**.  
+  This reflects the **forward pass performance** when the full prompt is fed to the model (e.g., how many input tokens per second it can process per second). It is usually a compute bound stage.
 
-Repeat this for each model version (Q8, Q4, Q2) to compare their efficiency.
+- **Token generation speed (tg)** — measures how fast the model **generates output tokens** during the autoregressive decoding phase.  
+  Each new token depends on the previously generated context, making this step more **memory-bound**.
+
+Repeat this process for each model variant (e.g., Q8, Q4, Q2) to compare how quantization impacts runtime efficiency.
 
 Your output should resemble:
 
 <img src="assets/lab3/llamaapp_q8.jpeg" alt="Benchmark Results for Q8 Model" width="300"/>
 
-And you can summarize your findings in a table:
+Then summarize your results in a table:
 
 | Quant | Prompt Processing (pp) | Token Generation (tg) |
 |--------|------------------------|------------------------|
@@ -290,19 +295,40 @@ And you can summarize your findings in a table:
 | Q4     | 12.0 tokens/s          | 7.1 tokens/s           |
 | Q2     | 9.7 tokens/s           | 10.0 tokens/s          |
 
-> 💡 **Insight:** Lower-bit models often trade slight accuracy degradation for faster runtime and smaller memory footprint. Particularly in the token generation phases as this is a memory bound process. 
+> 💡 **Insight:**  
+> Quantization can reduce precision slightly but improves memory usage and inference speed.  
+> The gain is most visible during **token generation**, which is typically the most time- and memory-intensive phase of autoregressive decoding.
 
-This step gives you both a subjective impression of quality and a quantitative measure of model efficiency on-device.
-
+This step provides both a **quantitative measure** of on-device efficiency and a **qualitative sense** of responsiveness across different quantization levels.
 
 ---
 
-##  Final Recap
+## 🎓 Course Summary: What We've Learned
 
-- Built and tested `llama.cpp` locally
-- Converted and quantized a Llama model to GGUF
-- Integrated quantized models into an Android app
-- Deployed and benchmarked on-device
+Across the three labs in this course, you've gained hands-on experience with the complete pipeline for deploying efficient AI models on mobile devices:
 
-> 🌟 You're now equipped to deploy and iterate on LLMs for edge/mobile inference!
+### Lab 1: Extreme Quantization Fundamentals
+- Trained a baseline FP32 language model and progressively quantized to 8-bit → 4-bit → 2-bit → 1-bit
+- Observed accuracy degradation with extreme compression (1-bit = 32× size reduction)
+- Implemented extreme ternary/binary quantization techniques
+- Recovered accuracy using Quantization-Aware Training (QAT) to achieve near-FP32 performance
 
+### Lab 2: Hardware-Software Co-Design
+- Implemented `QLinear` layers with integer-only GEMM operations
+- Applied per-layer mixed-precision quantization (8/4/2-bit) using post-training techniques
+- Profiled model size vs. cross-entropy to measure layer-specific sensitivity
+- Performed automated bit-width search to optimize hardware-aware objective functions
+
+### Lab 3: Real-World Mobile Deployment on ARM
+- Deployed quantized LLMs on ARM-based Android devices using `llama.cpp`
+- Benchmarked performance: aggressive quantization (Q2) can **double generation speed** while reducing model size by ~4x
+- Experienced the practical benefits: reduced latency, offline capability, enhanced privacy
+
+**Key Insight**: Quantization enables the impossible—running billion-parameter models on ARM phones. The 3B Llama model went from ~12GB (unusable on mobile) to ~750MB-3GB (runs smoothly on a typical phone).
+
+### Further Exploration
+- Experiment with **different model sizes** (1B vs 3B vs 7B) on your device
+- Try **custom prompts** to test model quality across quantization levels
+- Explore **llama.cpp's quantization formats**: Q5_K_M, Q6_K for different accuracy/speed balances
+- Read the [llama.cpp documentation](https://github.com/ggml-org/llama.cpp) for advanced optimization flags
+- Check out [GGUF model benchmarks](https://huggingface.co/spaces/ggml-org/gguf-arena) for community performance comparisons

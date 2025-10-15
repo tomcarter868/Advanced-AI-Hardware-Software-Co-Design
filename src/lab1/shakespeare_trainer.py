@@ -516,7 +516,7 @@ class ShakespeareModule(pl.LightningModule):
             batch_size=self.batch_size,
             shuffle=True,
             num_workers=self.num_workers,
-            pin_memory=True if torch.cuda.is_avaiable() else False
+            pin_memory=True if torch.cuda.is_available() else False
         )
 
     def val_dataloader(self):
