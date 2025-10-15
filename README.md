@@ -27,8 +27,8 @@ sudo apt install git-lfs              # or: brew install git-LFS
 git lfs install
 
 # Clone the repo and pull large files
-git clone https://github.com/your-org/Advanced-AI-on-Arm.git
-cd Advanced-AI-on-Arm
+git clone git@github.com:arm-university/Advanced-AI-pt-2.git
+cd Advanced-AI-pt-2
 git lfs pull
 ```
 
