@@ -516,7 +516,7 @@ class ShakespeareModule(pl.LightningModule):
             batch_size=self.batch_size,
             shuffle=True,
             num_workers=self.num_workers,
-            pin_memory=True
+            pin_memory=True if torch.cuda.is_available() else False
         )
 
     def val_dataloader(self):
@@ -525,7 +525,7 @@ class ShakespeareModule(pl.LightningModule):
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
-            pin_memory=True
+            pin_memory=True if torch.cuda.is_available() else False
         )
 
     def test_dataloader(self):
@@ -534,7 +534,7 @@ class ShakespeareModule(pl.LightningModule):
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
-            pin_memory=True
+            pin_memory=True if torch.cuda.is_available() else False
         )
     
     def generate(self, seed_text, max_new_tokens=100, temperature=1.0):
