@@ -1,14 +1,22 @@
 ![arm-education-logo](./Education_horizontal_violet.png)
 
-# Advanced AI
+# Advanced Quantization:  A practical Course
 
-This course provides a hands-on introduction to *extreme model quantization*, *hardware-aware optimization*, and *on-device deployment* for generative AI models. You'll explore advanced techniques to reduce model size, accelerate inference, and deploy compact LLMs on edge devices like Android smartphones.
+This course provides a hands-on introduction to *extreme model quantization*, *hardware-aware optimization*, and *on-device deployment* for generative AI models. You'll explore advanced techniques to reduce model size, accelerate inference, and deploy compact LLMs on edge devices like Android smartphones. 
 
-## Audience
+This course is Part 1 of a two‑part Advanced AI series. For Part 2, focusing on Mixture of Experts (MoE) models, see the companion material: **[Mixture of Experts: A Practical Course]()**.
+
+## Intended Audience
 
 This course is designed for industry ML engineers who want practical, ready-to-adapt examples for integrating advanced optimization techniques into their own applications. It is also well-suited for ML researchers interested in exploring and experimenting with cutting‑edge methods for model compression and performance optimization.
 
-Learners should be comfortable with intermediate Python and PyTorch, including working with modern network architectures such as transformers and general training pipelines. Those who want to build or refresh these fundamentals can first complete introductory and intermediate material such as the [Intro to AI](https://www.edx.org/learn/computer-science/arm-education-introduction-to-ai) or [Optimizing Generative AI on Arm](https://www.edx.org/learn/computer-science/arm-education-ai-on-arm) course.
+Learners should be comfortable with the following
+
+- **Deep learning architectures** — transformers, attention mechanisms, and feed-forward networks  
+- **Training and optimization** — gradient descent variants, regularization, and overfitting control  
+- **Practical skills** — Python programming experience and intermediate understanding of PyTorch  
+
+Those who want to build or refresh these fundamentals can first complete introductory and intermediate material such as the [Intro to AI](https://www.edx.org/learn/computer-science/arm-education-introduction-to-ai) or [Optimizing Generative AI on Arm](https://www.edx.org/learn/computer-science/arm-education-ai-on-arm) course.
 
 
 ## Labs Overview
@@ -40,8 +48,8 @@ sudo apt install git-lfs              # or: brew install git-LFS
 git lfs install
 
 # Clone the repo and pull large files
-git clone git@github.com:arm-university/Advanced-AI-pt-2.git
-cd Advanced-AI-pt-2
+git clone https://github.com/arm-university/Advanced-AI-Hardware-Software-Co-Design.git
+cd Advanced-AI-Hardware-Software-Co-Design
 git lfs pull
 ```
 
@@ -70,7 +78,7 @@ Open:
 ## Repository Structure
 
 ```
-./Advanced-AI-pt-2
+.
 ├── assets
 ├── lab1.ipynb
 ├── lab2.ipynb
