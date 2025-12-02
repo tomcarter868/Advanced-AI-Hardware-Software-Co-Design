@@ -1,6 +1,13 @@
-# Advanced AI on Arm
+# Advanced AI
 
 This course provides a hands-on introduction to *extreme model quantization*, *hardware-aware optimization*, and *on-device deployment* for generative AI models. You'll explore advanced techniques to reduce model size, accelerate inference, and deploy compact LLMs on edge devices like Android smartphones.
+
+## Audience
+
+This course is designed for industry ML engineers who want practical, ready-to-adapt examples for integrating advanced optimization techniques into their own applications. It is also well-suited for ML researchers interested in exploring and experimenting with cutting‑edge methods for model compression and performance optimization.
+
+Learners should be comfortable with intermediate Python and PyTorch, including working with modern network architectures such as transformers and general training pipelines. Those who want to build or refresh these fundamentals can first complete introductory and intermediate material such as the [Intro to AI](https://www.edx.org/learn/computer-science/arm-education-introduction-to-ai) or [Optimizing Generative AI on Arm](https://www.edx.org/learn/computer-science/arm-education-ai-on-arm) course.
+
 
 ## Labs Overview
 
@@ -16,6 +23,10 @@ Use [`llama.cpp`](https://github.com/ggerganov/llama.cpp) to quantize and deploy
 ---
 
 ## Getting Started
+
+### Requirements
+
+This course runs cross‑platform and has been validated on an NVIDIA DGX Spark; for training the models, we recommend using an accelerated backend such as a GPU. It is expected that you are familiar with configuring software across different operating systems, and you may need to install additional packages depending on your environment.
 
 This repository uses a unified `requirements.txt` and Git LFS to manage dependencies and large pretrained models.
 
@@ -57,14 +68,15 @@ Open:
 ## Repository Structure
 
 ```
-Advanced-AI-on-Arm/
-├── lab1.ipynb/
-├── lab2.ipynb/
-├── lab3.md/
-├── src/ 
-├── assets/
+./Advanced-AI-pt-2
+├── assets
+├── lab1.ipynb
+├── lab2.ipynb
+├── lab3.md
+├── LICENSE.md
+├── README.md
 ├── requirements.txt
-└── README.md
+└── src
 ```
 
 ---
@@ -90,8 +102,14 @@ To complete **Lab 3**, make sure the following are installed:
 
 ---
 
-## Questions?
+## License
+You are free to fork or clone this material. See `LICENSE.md` for the complete license.
 
-Open an issue or contact `oliver@grainge.me` if you encounter problems during setup or execution.
+## Inclusive Language Commitment
+Arm is committed to making the language we use inclusive, meaningful, and respectful. Our goal is to remove and replace non-inclusive language from our vocabulary to reflect our values and represent our global ecosystem.
+ 
+Arm is working actively with our partners, standards bodies, and the wider ecosystem to adopt a consistent approach to the use of inclusive language and to eradicate and replace offensive terms. We recognise that this will take time. This course may contain references to non-inclusive language; it will be updated with newer terms as those terms are agreed and ratified with the wider community. 
+ 
+Contact us at education@arm.com with questions or comments about this course. You can also report non-inclusive and offensive terminology usage in Arm content at terms@arm.com.
 
 ---
