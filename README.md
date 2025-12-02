@@ -1,3 +1,5 @@
+![arm-education-logo](./Education_horizontal_violet.png)
+
 # Advanced AI
 
 This course provides a hands-on introduction to *extreme model quantization*, *hardware-aware optimization*, and *on-device deployment* for generative AI models. You'll explore advanced techniques to reduce model size, accelerate inference, and deploy compact LLMs on edge devices like Android smartphones.
