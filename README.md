@@ -4,7 +4,7 @@
 
 This course provides a hands-on introduction to *extreme model quantization*, *hardware-aware optimization*, and *on-device deployment* for generative AI models. You'll explore advanced techniques to reduce model size, accelerate inference, and deploy compact LLMs on edge devices like Android smartphones. 
 
-This course is Part 1 of a two‑part Advanced AI series. For Part 2, focusing on Mixture of Experts (MoE) models, see the companion material: **[Mixture of Experts: A Practical Course]()**.
+This course is Part 1 of a two‑part Advanced AI series. For Part 2, focusing on Mixture of Experts (MoE) models, see the companion material: **[Mixture of Experts: A Practical Course](https://github.com/arm-university/Advanced-AI-Mixture-of-Experts)**.
 
 ## Intended Audience
 
